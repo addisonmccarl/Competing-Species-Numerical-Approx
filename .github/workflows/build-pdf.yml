@@ -1,0 +1,19 @@
+name: Build paper PDF
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['main.pdf']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Rebuild main.pdf"
+          file_pattern: main.pdf

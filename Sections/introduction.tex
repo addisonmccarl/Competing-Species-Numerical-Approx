@@ -1,0 +1,51 @@
+In ecosystems on all scales of life, there exists a wide variety of interspecific relationships, perhaps none more studied than the linked populations of predator and prey. The classic predator-prey dynamic is often modeled by a system of first-order differential equations known as the Lotka-Volterra model.
+While the two-species model captures the essential predator-prey oscillation, real ecosystems often involve multiple competing prey with a mutual predator. Understanding how interspecific competition interacts with and without joint predation can reveal insights into ecological modeling with meaningful implications for conservation.
+Here, we explore population dynamics between three species in a two-prey, one-predator system, in which prey compete for a limited resource. This variation to the classic model can be described through the following first-order system of differential equations:
+
+\begin{align}
+    x' &= \beta_1 x\left(1 - \frac{x}{K_1}\right) - c_1 xy - \alpha_{13} xz, \\
+    y' &= \beta_2 y\left(1 - \frac{y}{K_2}\right) - c_2 xy - \alpha_{23} yz, \\
+    z' &= \alpha_{31} xz + \alpha_{32} yz - \alpha z
+\end{align}
+
+Parameters governing these equations for our model are given in Table ~\ref{tab:constants}, and were designed to reflect plausible population dynamics rather than a specific ecological system. Factors such as differing birth rates and carrying capacities of different orders of magnitude model an inherent difference between the two prey species.
+
+These equations describe changes in population for prey species $x$ and $y$, as well as the predator species $z$. The first terms of Eq. 1 and Eq. 2 model growth in population density from birth rate $\beta_i$, while limited by the individual species carrying capacity $K_i$, modeling logistic growth of each species.
+
+The second term in each respective equation model the natural death rate without predation. Note that each of these terms is multiplied by the current population of the opposing prey. This is meant to simulate competition between species over natural resources. If one prey has a large population density, this limits the resources available to the second prey, and they then die off at higher rates. The final term in Eq. 1 and Eq. 2 represents the death due to predation. This term is directly proportional to predator population density $z$. Each term is multiplied by the current prey population density ($x$ or $y$) so that the death or growth remains proportional. Finally, with the predator model $z'$, the first two terms represent population growth due to predation of $x$ and $y$, respectively. The third term represents some death rate. Again, all three remain proportional to the population as they are multiplied by $z$. 
+
+\begin{table}[htbp]
+\centering
+\caption{Model Parameters and Initial Conditions}
+\label{tab:constants}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\ \midrule
+Birth Rate Species 1                         & $\beta_1$      & $3.15$                  \\
+Birth Rate Species 2                         & $\beta_2$      & $2.1$                   \\
+Carrying Capacity Species 1                  & $K_1$          & $3.5\times10^{4}$       \\
+Carrying Capacity Species 2                  & $K_2$          & $3.5\times10^{5}$       \\
+Death Rate Due to Outcompetition Species 1                         & $c_1$          & $3\times10^{-5}$        \\
+Death Rate Due to Outcompetition Species 2                         & $c_2$          & $3\times10^{-5}$        \\
+Death Rate Due to Predation Species 1                     & $\alpha_{13}$  & $0.15$                  \\
+Death Rate Due to Predation Species 2                     & $\alpha_{23}$  & $0.15$                  \\
+Predator Growth Rate Attributed to Species 1 & $\alpha_{31}$  & $6\times10^{-5}$        \\
+Predator Growth Rate Attributed to Species 2 & $\alpha_{32}$  & $6\times10^{-5}$        \\
+Predator Death Rate                          & $\alpha$       & $1.2$                   \\ 
+\midrule 
+\textbf{Initial Conditions} \\ 
+\midrule
+Initial Population Density of Prey Species 1 & 
+$x_0$ & $3\times10^{3}$ \\
+Initial Population Density of Prey Species 2 &
+$y_0$ & $3\times10^{3}$ \\
+Initial Population Density of Predator &
+$z_0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To solve this system of equations, analytical solutions cannot be determined, so we test 5 explicit numerical methods to approximate solutions and analyze states of equilibrium.
+Each method has different error convergence and behavior, and we will therefore require varying step sizes for each in order to achieve similar errors. 
+The methods with the slowest convergence will require smaller step sizes, and conversely, faster convergence will allow for larger step sizes.
+Since no exact solution exists, the error will be approximated by comparison with results from an adaptive method with very low tolerance. 

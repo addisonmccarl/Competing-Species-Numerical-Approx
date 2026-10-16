@@ -1,0 +1,75 @@
+% SASYR 2025 - Template based on:
+% samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage[labelfont=bf]{caption}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{animate}
+\usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+\title{Modeling Competing Species in the Presence of a Predator}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Grant Lillehei \and
+Addison McCarl}
+
+%
+\authorrunning{G. Lillehei, A. McCarl}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{MAT455, Augsburg University, Minneapolis, MN 55414}
+
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+\input{Sections/abstract}
+\end{abstract}
+%
+%
+%
+\section{Introduction}
+\input{Sections/introduction}
+
+\section{Explicit Numerical Methods}
+\input{Sections/methods}
+
+\section{Results}
+\input{Sections/results}
+
+\section{Conclusion}
+\input{Sections/conclusion}
+
+\section{Author Contributions}
+\input{Sections/contribution}
+
+\bibliographystyle{ieeetr}
+\bibliography{refs}
+
+\section*{Code Availability}
+The source code is available at the following repository: \url{https://gitlab.com/lilleheg/competing-species/}
+
+\end{document}
